@@ -1,8 +1,9 @@
 ﻿const builder = require("botbuilder"),
-    restify = require("restify"),
-    dotenv = require("dotenv"),
-    githubClient = require("./github-client");
+      restify = require("restify"),
+      dotenv = require("dotenv"),
+      githubClient = require("./github-client");
 
+// load environment variables
 dotenv.load();
 
 let luisUrl = process.env.LUIS_MODEL;
@@ -21,7 +22,7 @@ const createCard = (session, profile) => {
     let card = new builder.HeroCard(session);
     card.title(profile.login);
     card.images([builder.CardImage.create(session, profile.avatar_url)]);
-    card.tap(new builder.CardAction.openUrl(session, profile.html_url));
+    card.tap(builder.CardAction.openUrl(session, profile.html_url));
     return card;
 };
 
@@ -48,12 +49,11 @@ let showResults = (session, result, next) => {
             } else if (totalCount > 10) {
                 session.endDialog("More than 10 results were found. Please provide a more restrictive query.");
             } else {
-                session.dialogData.property = null;
                 // convert results into an array of cards
                 let cards = profiles.items.map(item => createCard(session, item));
                 // ask what profile it wanna load
                 // builder.Prompts.choice(session, "What profile do you wanna load?", usernames);
-                let message = new builder.Message(session).attachments(cards).attachmentLayout("carousel");
+                let message = new builder.Message(session).attachments(cards);
                 session.send(message);
             }
         });
