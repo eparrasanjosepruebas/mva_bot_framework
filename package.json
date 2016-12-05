@@ -6,6 +6,9 @@
   "author": {
     "name": "Eduardo Parra San Jose"
   },
+  "engines": {
+    "node": "6.6.0"
+  },
   "dependencies": {
     "botbuilder": "^3.4.4",
     "dotenv": "^2.0.0",
