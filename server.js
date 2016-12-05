@@ -22,7 +22,7 @@ const createCard = (session, profile) => {
     let card = new builder.HeroCard(session);
     card.title(profile.login);
     card.images([builder.CardImage.create(session, profile.avatar_url)]);
-    card.tap(builder.CardAction.openUrl(session, profile.html_url));
+    card.buttons([builder.CardAction.openUrl(session, profile.html_url, "See Profile")]);
     return card;
 };
 
