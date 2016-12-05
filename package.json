@@ -1,0 +1,14 @@
+{
+  "name": "mva-github-bot",
+  "version": "0.0.1",
+  "description": "mvaGithubBot",
+  "main": "server.js",
+  "author": {
+    "name": "Eduardo Parra San Jose"
+  },
+  "dependencies": {
+    "botbuilder": "^3.4.4",
+    "dotenv": "^2.0.0",
+    "restify": "^4.3.0"
+  }
+}
